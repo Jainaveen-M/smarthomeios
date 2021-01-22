@@ -2,13 +2,10 @@ import 'dart:convert';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './Settings.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-import 'package:neumorphic/neumorphic.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './demo.dart';
-import './waterTank.dart';
 import 'DemoButtonPage.dart';
 import 'main.dart';
 import 'dart:async';
@@ -234,7 +231,7 @@ class _DemoHomeState extends State<DemoHome>  with AutomaticKeepAliveClientMixin
 
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>waterTank("test")));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Demo()));
                   },
                   child: Container(
                     padding: EdgeInsets.all(10),
@@ -309,7 +306,7 @@ class _DemoHomeState extends State<DemoHome>  with AutomaticKeepAliveClientMixin
                 ),
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Settings(true,true)));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Demo()));
                   },
                   child: Container(
                     padding: EdgeInsets.all(10),
@@ -411,10 +408,8 @@ class _DemoHomeState extends State<DemoHome>  with AutomaticKeepAliveClientMixin
                               onTap: (){
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>DemoButtons(widget.email,name[index].toString(),index,widget.ipAddress)));
                               },
-                              child: NeuCard(
-                                  curveType: CurveType.concave,
-                                  bevel: 10,
-                                  decoration: NeumorphicDecoration(
+                              child: Container(
+                                  decoration:  BoxDecoration(
                                     color: Colors.grey[700],
                                     borderRadius: BorderRadius.circular(10),
 

@@ -24,18 +24,10 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.12.0+2
-  grouped_list: ^1.2.1
   connectivity: ^0.4.9
-  flappy_search_bar: 1.4.1
   shared_preferences: ^0.5.8
-  hexcolor: ^1.0.6
-  flat_icons_flutter: ^1.0.2
-  neumorphic: any
   google_fonts: ^1.1.1
-  url_launcher: ^5.7.10
-  wave: ^0.1.0
   rflutter_alert: ^1.1.0
-  wake_on_lan: ^1.1.1+5
 
 
   # The following adds the Cupertino Icons font to your application.

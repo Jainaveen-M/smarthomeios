@@ -2,14 +2,11 @@ import 'dart:convert';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './Settings.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-import 'package:neumorphic/neumorphic.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './Button.dart';
 import './demo.dart';
-import './waterTank.dart';
 import 'main.dart';
 import 'dart:async';
 import 'package:connectivity/connectivity.dart'
@@ -171,60 +168,6 @@ class _HomeState extends State<Home>  with AutomaticKeepAliveClientMixin{
        }
      }
 
-    /*if(response.statusCode==200){
-      setState(() {
-        data = fetchdata;
-        data_values = fetc_values;
-        total_devices = data_values.length.toString();
-      });
-      for(int i=0;i<data.length;i++){
-        print("offline ${data[i].toString()}");
-
-        if(data[i].toString().contains("_Admin_Room") && (!name.contains(data[i].toString().contains("Admin_Room")))){
-          name.add("Admin_Room");
-        }
-        else if(data[i].toString().contains("_Hall") && (!name.contains(data[i].toString().contains("Hall")))){
-          name.add("Hall");
-        }
-        else if(data[i].toString().contains("Living_Room") && (!name.contains(data[i].toString().contains("Living_Room")))){
-          name.add("Living_Room");
-        }
-        else if(data[i].toString().contains("_Garage") && (!name.contains(data[i].toString().contains("Garage")))){
-          name.add("Garage");
-        }
-        else if(data[i].toString().contains("_Kitchen") && (!name.contains(data[i].toString().contains("Kitchen")))){
-          name.add("Kitchen");
-        }
-        else if(data[i].toString().contains("_Bedroom1") && (!name.contains(data[i].toString().contains("Bedroom_1")))){
-          name.add("Bedroom_1");
-        }
-        else if(data[i].toString().contains("_Bedroom2") && (!name.contains(data[i].toString().contains("Bedroom_2")))){
-          name.add("Bedroom_2");
-        }
-        else if(data[i].toString().contains("Master_Bedroom") && (!name.contains(data[i].toString().contains("Master_Bedroom")))){
-          name.add("Master_Bedroom");
-        }
-        else if(data[i].toString().contains("_Bedroom") && (!name.contains(data[i].toString().contains("Bedroom")))){
-          name.add("Bedroom");
-        }
-
-        else if(data[i].toString().contains("_Store_Room") && (!name.contains(data[i].toString().contains("Store_Room")))){
-          name.add("Store_Room");
-        }
-        else if(data[i].toString().contains("_Outside") && (!name.contains(data[i].toString().contains("Outside")))){
-          name.add("Outside");
-        }
-        else if(data[i].toString().contains("_Parking") && (!name.contains(data[i].toString().contains("Parking")))){
-          name.add("Parking");
-        }
-        else if(data[i].toString().contains("_Outside") && (!name.contains(data[i].toString().contains("Outside")))){
-          name.add("Outside");
-        }
-        else if(data[i].toString().contains("_Garden") && (!name.contains(data[i].toString().contains("Garden")))){
-          name.add("Garden");
-        }
-      }
-    }*/
 
     setState(() {
       name=name.toSet().toList();
@@ -434,7 +377,7 @@ class _HomeState extends State<Home>  with AutomaticKeepAliveClientMixin{
 
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>waterTank(widget.email)));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Demo()));
                   },
                   child: Container(
                     padding: EdgeInsets.all(10),
@@ -524,21 +467,6 @@ class _HomeState extends State<Home>  with AutomaticKeepAliveClientMixin{
                 ),
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Settings(widget.check_url,isSwitched)));
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    child: Row(
-                      children: [
-                        Icon(Icons.settings,color: Colors.grey[700]),
-                        SizedBox(width: 20,),
-                        Text("Settings",style: GoogleFonts.robotoSlab(color: Colors.grey[700]))
-                      ],
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: (){
                     logout().then((value) =>
                         Navigator.pushAndRemoveUntil(
                           context,
@@ -609,14 +537,40 @@ class _HomeState extends State<Home>  with AutomaticKeepAliveClientMixin{
                                         onTap: (){
                                           Navigator.push(context, MaterialPageRoute(builder: (context)=>Button(widget.email,name[index].toString(),index,widget.ipAddress,_color1,_color2,g1,widget.isDarkMode,widget.check_url)));
                                         },
-                                        child: NeuCard(
-                                            curveType: CurveType.concave,
-                                            bevel: 10,
-                                            decoration:widget.isDarkMode==false?  NeumorphicDecoration(
+                                        child: Container(
+                                            decoration:widget.isDarkMode==false?  BoxDecoration(
                                               color: Colors.grey[200],
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  offset: Offset(2,2),
+                                                  color: Colors.grey[300],
+                                                  blurRadius: 2,
+                                                  spreadRadius: 1,
+                                                ),
+                                                BoxShadow(
+                                                  offset: Offset(-2,-2),
+                                                  color: Colors.grey[300],
+                                                    blurRadius: 2,
+                                                  spreadRadius: 1,
+                                                )
+                                              ],
                                               borderRadius: BorderRadius.circular(10),
-                                            ):NeumorphicDecoration(
+                                            ): BoxDecoration(
                                               color: _color1,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    offset: Offset(2,2),
+                                                    color: Colors.grey[800],
+                                                    blurRadius: 2,
+                                                  spreadRadius: 1,
+                                                ),
+                                                BoxShadow(
+                                                    offset: Offset(-2,-2),
+                                                    color: Colors.grey[800],
+                                                    blurRadius: 2,
+                                                  spreadRadius: 1,
+                                                )
+                                              ],
                                               borderRadius: BorderRadius.circular(10),
                                             ),
                                             height: height*0.2,

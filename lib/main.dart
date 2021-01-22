@@ -8,7 +8,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './DemoHomePage.dart';
 import 'Home.dart';
-import 'package:url_launcher/url_launcher.dart';
+//import 'package:url_launcher/url_launcher.dart';
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -436,7 +436,7 @@ class _MyAppState extends State<MyApp> {
                               ),
                               InkWell(
                                 onTap: () async{
-                                  launchUrl("tel:9095640275");
+                                 // launchUrl("tel:9095640275");
                                 },
                                 child: Text('Contact us',
                                     style:GoogleFonts.robotoSlab(fontSize: 15)),
@@ -533,11 +533,11 @@ class _MyAppState extends State<MyApp> {
       // No-Internet Case
     });
   }
-  void launchUrl(String url) async {
+  /*void launchUrl(String url) async {
     if (await canLaunch(url)) {
       launch(url);
     } else {
       throw "Could not launch $url";
     }
-  }
+  }*/
 }
